@@ -1,0 +1,14 @@
+# Ignore dataset folders
+backend/cifar_data/
+dataset/
+data/
+
+# Ignore model files
+*.pt
+*.pth
+*.h5
+
+# Ignore archives
+*.zip
+*.tar
+*.tar.gz
