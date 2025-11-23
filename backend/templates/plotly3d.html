@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3D Visualization</title>
+  <style>
+    body {
+        margin: 0;
+        padding: 0;
+        background: #000;
+        overflow: hidden;
+        font-family: Arial, sans-serif;
+    }
+    iframe {
+        width: 100vw;
+        height: 100vh;
+        border: none;
+    }
+    .back {
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        background: white;
+        padding: 10px 20px;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: bold;
+        z-index: 10;
+        color: black;
+    }
+  </style>
+</head>
+<body>
+
+<!-- FIX: Always return to the result (report) page -->
+<a class="back" href="/result">
+    &larr; Back
+</a>
+
+
+<!-- Load the generated 3D Plotly HTML -->
+<iframe src="{{ url_for('static', filename='results/' + html_file) }}"></iframe>
+
+</body>
+</html>

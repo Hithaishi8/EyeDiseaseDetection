@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>EyeSightAI — AI-powered Eye Screening</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <style>
+    .fade-up { opacity:0; transform: translateY(12px); animation: fadeUp .6s ease-out forwards; }
+    @keyframes fadeUp { to { opacity:1; transform: translateY(0); } }
+  </style>
+</head>
+
+<body class="antialiased bg-gradient-to-b from-slate-50 to-white text-slate-800">
+
+  <!-- NAVBAR -->
+  <header class="max-w-6xl mx-auto px-6 py-6 flex items-center justify-between">
+    <a href="/" class="flex items-center gap-3">
+
+      <div class="w-12 h-12 rounded-2xl bg-gradient-to-br from-indigo-600 to-violet-500 
+                  flex items-center justify-center text-white font-extrabold shadow-lg">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+          <path d="M12 3C8 3 5 6 5 10s3 7 7 7 7-3 7-7-3-7-7-7z" fill="white"/>
+        </svg>
+      </div>
+
+      <div>
+        <div class="font-semibold text-lg">EyeSightAI</div>
+        <div class="text-xs text-slate-500 -mt-0.5">AI-powered screening</div>
+      </div>
+    </a>
+
+    <nav class="flex gap-8 text-sm font-medium">
+      <a href="/home" class="hover:text-indigo-600">Home</a>
+      <a href="/about" class="hover:text-indigo-600">About</a>
+      <a href="/upload" class="hover:text-indigo-600">Upload</a>
+    </nav>
+  </header>
+
+  <!-- HERO SECTION -->
+  <main class="max-w-6xl mx-auto px-6 py-12 grid lg:grid-cols-2 gap-10 items-center">
+
+    <!-- LEFT SIDE -->
+    <section class="space-y-6 fade-up">
+      <h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
+        AI-powered eye screening<br/>
+        <span class="text-indigo-600">Fast. Accurate. Clinically actionable.</span>
+      </h1>
+
+      <p class="text-slate-600 text-lg max-w-xl">
+        EyeSightAI analyzes retinal fundus images using state-of-the-art deep learning
+        to detect diabetic retinopathy, glaucoma, and cataract with precision.
+      </p>
+
+      <div class="flex gap-4 items-center">
+        <a href="/home"
+           class="inline-block px-6 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500 
+                  text-white font-semibold shadow-lg transform hover:-translate-y-1 transition">
+           Get Started
+        </a>
+
+        <a href="#features" class="text-sm text-slate-600 hover:text-slate-800">
+          Learn more
+        </a>
+      </div>
+
+      <ul id="features" class="mt-8 grid grid-cols-2 gap-3 text-sm text-slate-600 max-w-sm">
+        <li>✔ Region-wise highlighting</li>
+        <li>✔ Lightweight deployment</li>
+        <li>✔ Clinic-ready PDF reports</li>
+        <li>✔ Explainable outputs</li>
+      </ul>
+    </section>
+
+    <!-- RIGHT SIDE with RETINA ILLUSTRATION + New Black–Blue Gradient -->
+   <section class="p-7 rounded-2xl shadow-xl 
+                bg-gradient-to-br from-blue-900/20 via-indigo-700/20 to-purple-600/20
+                backdrop-blur-xl border border-indigo-300/30 fade-up">
+
+
+      <h2 class="text-2xl font-extrabold 
+                 bg-gradient-to-r from-black via-blue-700 to-blue-400 
+                 bg-clip-text text-transparent mb-4">
+        👁 The Smarter Way to See What the Eye Can't
+      </h2>
+
+      <p class="text-slate-700 text-[15px] leading-relaxed mb-5">
+        EyeSightAI brings clarity where it matters most — inside the human retina.
+        Our AI-enhanced screening system detects early signs of diabetic retinopathy,
+        glaucoma, and cataract with unmatched precision, empowering clinicians
+        with fast, actionable insights.
+      </p>
+
+      <!-- Retina Illustration -->
+      
+      <div class="p-4 rounded-xl bg-gradient-to-r from-indigo-50 to-violet-50 
+                  border border-indigo-100 shadow-sm">
+        <p class="text-indigo-700 text-sm font-medium">
+          💡 <span class="font-semibold">Smart Insights:</span> Turning retinal images into 
+          accurate diagnostics in seconds.
+        </p>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-sm text-slate-500">
+    <div class="flex items-center justify-between">
+      <div>© <strong>EyeSightAI</strong> — Built for clinics & screening camps</div>
+      <div>Contact: <a href="mailto:hello@eyesight.ai" class="text-indigo-600">aj@eyesight.ai</a></div>
+    </div>
+  </footer>
+
+</body>
+</html>

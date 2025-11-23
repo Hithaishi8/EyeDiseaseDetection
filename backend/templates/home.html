@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1"/>
+  <title>Home | EyeSightAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <style>
+    .glass { background: rgba(255,255,255,0.75); backdrop-filter: blur(6px); }
+    .reveal { opacity:0; transform: translateY(10px); animation: reveal .6s forwards; }
+    @keyframes reveal { to { opacity:1; transform: translateY(0) } }
+  </style>
+</head>
+
+<body class="antialiased bg-gray-50 text-slate-800">
+
+  <!-- NAV -->
+  <header class="bg-white shadow-sm">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-violet-500 
+                    flex items-center justify-center text-white font-bold">AI</div>
+        <div>
+          <div class="font-semibold">EyeSightAI</div>
+          <div class="text-xs text-slate-500">AI-powered screening</div>
+        </div>
+      </a>
+
+      <nav class="flex gap-8 text-sm font-medium">
+        <a href="/home" class="hover:text-indigo-600">Home</a>
+        <a href="/about" class="hover:text-indigo-600">About</a>
+        <a href="/upload" class="hover:text-indigo-600">Upload</a>
+      </nav>
+
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main class="max-w-6xl mx-auto px-6 py-12">
+    <div class="grid lg:grid-cols-2 gap-10 items-center">
+
+      <!-- LEFT SIDE -->
+      <div>
+        <h1 class="text-3xl md:text-4xl font-extrabold leading-tight">
+          Make screening simple with <span class="text-indigo-600">EyeSightAI</span>
+        </h1>
+
+        <p class="text-slate-600 mt-4">
+          Accurate detection, interpretable overlays, and clinic-ready reports — 
+          built for scalable deployments.
+        </p>
+
+        <div class="mt-6 flex gap-4">
+          <a href="/upload"
+             class="px-5 py-3 rounded-lg bg-gradient-to-r from-indigo-600 to-violet-500
+                    text-white font-semibold shadow-lg">
+             Open Upload
+          </a>
+          <a href="#capabilities" 
+             class="px-5 py-3 rounded-lg border border-slate-200 text-slate-700">
+            Capabilities
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT SIDE CLEAN + ALIGNED -->
+      <div class="glass p-6 rounded-2xl shadow-md reveal">
+
+        <h4 class="font-semibold">Quick Demo</h4>
+        <p class="text-sm text-slate-600 mt-2">
+          Watch how EyeSightAI analyzes fundus images and generates results.
+        </p>
+
+        <!-- VIDEO -->
+        <video controls muted loop class="w-full rounded-xl shadow-md mt-4">
+          <source src="/static/videos/demo_video.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+
+
+      </div>
+
+    </div>
+
+    <!-- CAPABILITIES -->
+    <section id="capabilities" class="mt-16 grid md:grid-cols-3 gap-6">
+      <div class="p-6 bg-white rounded-xl shadow-sm reveal">
+        <h3 class="font-semibold text-indigo-600">Classification</h3>
+        <p class="text-slate-600 text-sm mt-2">Multi-class diagnosis using a hybrid CNN + wavelet approach.</p>
+      </div>
+      <div class="p-6 bg-white rounded-xl shadow-sm reveal" style="animation-delay:.08s">
+        <h3 class="font-semibold text-indigo-600">Segmentation</h3>
+        <p class="text-slate-600 text-sm mt-2">U-Net based masks and bounding boxes to visualize lesions.</p>
+      </div>
+      <div class="p-6 bg-white rounded-xl shadow-sm reveal" style="animation-delay:.16s">
+        <h3 class="font-semibold text-indigo-600">Reports</h3>
+        <p class="text-slate-600 text-sm mt-2">Downloadable PDF reports with overlays and recommendations.</p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="max-w-6xl mx-auto px-6 py-8 text-sm text-slate-500">
+    <div class="flex justify-between">
+      <div>© EyeSightAI</div>
+      <div>
+        Contact: <a href="mailto:hello@eyesight.ai" class="text-indigo-600">aj@eyesight.ai</a>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

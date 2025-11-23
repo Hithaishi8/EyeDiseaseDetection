@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Analysis Results | Eye Disease Detection</title>
+
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
+
+    body {
+      font-family:'Inter','Segoe UI',sans-serif;
+      background:linear-gradient(135deg,#0f0f12,#764ba2);
+      padding:40px 20px;
+      min-height:100vh;
+      overflow-x:hidden;
+    }
+
+    .container { max-width:1200px; margin:0 auto; }
+
+    /* HEADER */
+    .header {
+      background:rgba(255,255,255,0.95);
+      padding:40px;
+      border-radius:24px;
+      text-align:center;
+      margin-bottom:40px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .header h1 {
+      background:linear-gradient(135deg,#0f0f12,#764ba2);
+      background-clip:text;
+      -webkit-background-clip:text;
+      color:transparent;
+      font-size:2.6rem;
+      font-weight:800;
+    }
+
+    .diagnosis-badge {
+      display:inline-block;
+      margin-top:20px;
+      padding:15px 40px;
+      border-radius:50px;
+      font-size:1.4rem;
+      font-weight:700;
+      background:linear-gradient(135deg,#667eea,#764ba2);
+      color:white;
+    }
+
+    .cdr-info {
+      margin-top:20px;
+      background:#eef;
+      border:2px solid #667eea;
+      padding:12px 20px;
+      border-radius:12px;
+      display:inline-block;
+    }
+
+    /* INFO SECTION */
+    .info-section {
+      background:rgba(255,255,255,0.95);
+      padding:30px;
+      border-radius:24px;
+      margin-bottom:40px;
+      box-shadow:0 20px 60px rgba(0,0,0,0.3);
+    }
+
+    .info-grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:20px;
+    }
+
+    .info-item {
+      background:#dcdceb;
+      padding:20px;
+      border-radius:16px;
+      border:2px solid #e8eaf6;
+      text-align:center;
+    }
+
+    .info-icon {
+      font-size:2rem;
+      margin-bottom:8px;
+    }
+
+    /* ============================= */
+    /*   SIDE-BY-SIDE IMAGE SECTION  */
+    /* ============================= */
+    .image-row {
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;
+      gap:30px;
+      margin-top:30px;
+      flex-wrap:nowrap;
+    }
+
+    .image-box {
+      background:rgb(255, 255, 255);
+      padding:20px;
+      border-radius:18px;
+      width:42%;
+      box-shadow:0 10px 40px rgba(0,0,0,0.25);
+      text-align:center;
+    }
+
+    .image-box h3 {
+      margin-bottom:10px;
+      font-size:1.2rem;
+      font-weight:700;
+      color:#444;
+    }
+
+    .result-img {
+      width:100%;
+      max-height:260px;
+      object-fit:contain;
+      border-radius:14px;
+    }
+
+    @media(max-width:850px){
+      .image-row { flex-direction:column; }
+      .image-box { width:100%; }
+    }
+
+    /* BUTTONS */
+    .actions { text-align:center; margin-top:40px; }
+
+    .back-btn {
+      padding:16px 40px;
+      background:white;
+      border:2px solid #667eea;
+      border-radius:12px;
+      color:#667eea;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-block;
+      margin-right:15px;
+    }
+
+    .back-btn:hover {
+      background:#667eea;
+      color:white;
+    }
+
+    .pdf-btn {
+      padding:16px 40px;
+      background:#667eea;
+      border-radius:12px;
+      color:white;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+      display:inline-block;
+    }
+
+    .pdf-btn:hover {
+      background:#4a59c9;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- HEADER -->
+    <div class="header">
+      <h1>🎯 Analysis Complete</h1>
+      <div class="diagnosis-badge">{{ disease }}</div>
+
+      {% if cdr %}
+      <div class="cdr-info">
+        <strong>CDR:</strong> {{ cdr }}
+      </div>
+      {% endif %}
+    </div>
+
+    <!-- ⭐ FULL ANALYSIS REPORT -->
+    <div class="info-section">
+      <h2 style="font-size:1.8rem;font-weight:800;margin-bottom:20px;color:#444;">
+        📝 Detailed Analysis Report
+      </h2>
+
+      <div class="info-grid">
+        
+
+        <!-- CLASSIFICATION RESULT -->
+        <div class="info-item">
+          <div class="info-icon">📌</div>
+          <div class="info-label">Disease Classification</div>
+          <div class="info-value">
+            <b>Disease:</b> {{ disease }} <br>
+            <b>Confidence:</b> {{ cls_acc }}%
+          </div>
+        </div>
+
+       
+
+        <!-- DR INFORMATION -->
+        {% if disease == "Diabetic Retinopathy" %}
+        <div class="info-item">
+          <div class="info-icon">👁️</div>
+          <div class="info-label">DR Information</div>
+          <div class="info-value">
+            <p>Bright yellow-white spots</p>
+            <p>lipid deposits</p>
+            <p>Dilated Blood Vessels</p>
+
+            
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- GLAUCOMA INFO -->
+        {% if disease == "Glaucoma" %}
+        <div class="info-item">
+          <div class="info-icon">👁️</div>
+          <div class="info-label">Glaucoma Info</div>
+          <div class="info-value">
+            CDR Ratio: <b>{{ cdr }}</b> <br>
+            {% if cdr|float >= 0.6 %}
+              <span style="color:red;">High Risk</span>
+            {% else %}
+              <span style="color:green;">Normal Range</span>
+            {% endif %}
+          </div>
+        </div>
+        {% endif %}
+        <!-- DETECTED ABNORMALITIES OVERVIEW -->
+<div class="info-item">
+  <div class="info-icon">🧪</div>
+  <div class="info-label">Detected Abnormalities</div>
+  <div class="info-value">
+
+    {% if disease == "Diabetic Retinopathy" %}
+      Exudates Detected: <b>{{ bbox_count }}</b> <br>
+      Severity Level: <b>{{ severity }}</b> <br>
+      Affected Regions: <b>{{ "Multiple" if bbox_count > 4 else "Localized" }}</b>
+
+    {% elif disease == "Glaucoma" %}
+      CDR Ratio: <b>{{ cdr }}</b> <br>
+      Optic Nerve Risk: 
+        {% if cdr|float >= 0.6 %}
+          <b style="color:red;">Severe</b>
+        {% else %}
+          <b style="color:green;">Mild</b>
+        {% endif %} <br>
+      Structural Changes: <b>{{ severity }}</b>
+
+    {% elif disease == "Cataract" %}
+      Lens Opacity: <b>{{ severity }}</b> <br>
+      Clarity Loss: <b>{{ "Significant" if severity=="High" else "Moderate" }}</b>
+
+    {% else %}
+      No abnormalities detected. Eye appears normal.
+    {% endif %}
+
+  </div>
+</div>
+
+<!-- 3D STRUCTURAL INFORMATION -->
+<div class="info-item">
+  <div class="info-icon">🧊</div>
+  <div class="info-label">3D Structural Information</div>
+  <div class="info-value">
+    {% if plot3d %}
+      3D Map Generated: <b>Yes</b> <br>
+      Depth Variation: <b>Detected</b> <br>
+      <a href="/plot3d/{{ plot3d }}" style="color:#667eea; font-weight:600;">
+        View 3D Surface Map
+      </a>
+    {% else %}
+      3D Data Unavailable
+    {% endif %}
+  </div>
+</div>
+
+
+        {% if disease == "Cataract" %}
+        <div class="info-item">
+          <div class="info-icon">👁️</div>
+          <div class="info-label">Cataract Info</div>
+          <div class="info-value">
+            Opacity Detected <br>
+           <p>Defocused</p>
+           <p>Scattered glare</p>
+
+          </div>
+        </div>
+        {% endif %}
+
+        <!-- 3D INFO -->
+       
+       
+
+      </div>
+    </div>
+
+    <!-- ⭐ SIDE-BY-SIDE IMAGES -->
+    <div class="image-row">
+
+      {% if original_image %}
+      <div class="image-box">
+        <h3>Original Image</h3>
+        <img src="{{ url_for('static', filename='results/' + original_image) }}" class="result-img">
+      </div>
+      {% endif %}
+
+      {% if result_image %}
+      <div class="image-box">
+        <h3>Analyzed / Segmented Image</h3>
+        <img src="{{ url_for('static', filename='results/' + result_image) }}" class="result-img">
+      </div>
+      {% endif %}
+
+    </div>
+
+    <!-- BUTTONS -->
+    <div class="actions">
+      <a href="/upload" class="back-btn">Upload Another Image</a>
+
+      <a href="/download_report" class="pdf-btn">Download PDF Report</a>
+    </div>
+
+  </div>
+</body>
+</html>
