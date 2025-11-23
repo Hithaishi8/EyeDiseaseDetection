@@ -12,3 +12,8 @@ data/
 *.zip
 *.tar
 *.tar.gz
+
+backend/cifar_data/
+backend/models/*.pt
+*.pt
+*.tar.gz
