@@ -1,4 +1,5 @@
 import os
+import torch
 import cv2
 import torch
 import warnings
@@ -71,7 +72,13 @@ class UNet(nn.Module):
 # -------------------------------------------------------
 # Load Model
 # -------------------------------------------------------
-MODEL_PATH = r"C:\Users\hitha\OneDrive\Desktop\eye app\eye disease app\backend\models\unet_glaucoma_with_metrics.pt"
+
+
+# Get root/backend folder
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MODEL_PATH = os.path.join(BASE_DIR, "models", "unet_glaucoma_with_metrics.pt")
+
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
 glaucoma_model = UNet(n_classes=3).to(DEVICE)

@@ -1,5 +1,6 @@
 # backend/utils/dr_inference.py
 import os
+import torch
 from collections import OrderedDict
 import warnings
 
@@ -70,7 +71,12 @@ class UNet(nn.Module):
 # ------------------------
 # Model init & load
 # ------------------------
-MODEL_PATH = r"C:\Users\hitha\OneDrive\Desktop\eye app\eye disease app\backend\models\unet_dr_best_collab.pt"
+
+
+# Get root/backend folder
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+
+MODEL_PATH = os.path.join(BASE_DIR, "models", "unet_dr_best_collab.pt")
 DEVICE = torch.device("cpu")
 
 def _load_model(model, path):
