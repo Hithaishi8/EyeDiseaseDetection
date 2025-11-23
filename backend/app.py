@@ -1,5 +1,8 @@
-# backend/app.py — FINAL FIXED VERSION WITH RESULT PAGE + PDF + BACK BUTTON FIX
-import os
+import sys, os
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
+sys.path.append(os.path.join(current_dir))          # backend/
+sys.path.append(os.path.join(current_dir, ".."))    # project root
 import warnings
 warnings.filterwarnings("ignore", message="You are using `torch.load` with `weights_only=False`")
 
@@ -21,11 +24,11 @@ from reportlab.lib.utils import ImageReader
 
 # utils
 # OLD → from backend.utils.plotly_3d import build_plotly_3d
-from backend.utils.plotly_3d import build_plotly_3d_with_bscan     # ✅ FIXED
+from utils.plotly_3d import build_plotly_3d_with_bscan     # ✅ FIXED
 
-from backend.utils.dr_inference import run_dr_unet
-from backend.utils.glaucoma_inference import run_glaucoma_unet
-from backend.utils.cataract_3d import build_cataract_heightmap
+from utils.dr_inference import run_dr_unet
+from utils.glaucoma_inference import run_glaucoma_unet
+from utils.cataract_3d import build_cataract_heightmap
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
