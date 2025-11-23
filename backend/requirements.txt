@@ -1,0 +1,13 @@
+flask
+gunicorn
+torch
+torchvision
+opencv-python
+numpy
+pillow
+matplotlib
+pywavelets
+plotly
+reportlab
+scikit-image
+scipy
