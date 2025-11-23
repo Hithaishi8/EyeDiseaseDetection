@@ -1,8 +1,9 @@
 import sys, os
 current_dir = os.path.dirname(os.path.abspath(__file__))
+parent_dir = os.path.dirname(current_dir)
 sys.path.append(current_dir)
-sys.path.append(os.path.join(current_dir))          # backend/
-sys.path.append(os.path.join(current_dir, ".."))    # project root
+sys.path.append(parent_dir)
+
 import warnings
 warnings.filterwarnings("ignore", message="You are using `torch.load` with `weights_only=False`")
 
@@ -24,11 +25,12 @@ from reportlab.lib.utils import ImageReader
 
 # utils
 # OLD → from backend.utils.plotly_3d import build_plotly_3d
-from utils.plotly_3d import build_plotly_3d_with_bscan     # ✅ FIXED
-
+# ---- NOW IMPORT UTILS CORRECTLY ----
+from utils.plotly_3d import build_plotly_3d_with_bscan
 from utils.dr_inference import run_dr_unet
 from utils.glaucoma_inference import run_glaucoma_unet
 from utils.cataract_3d import build_cataract_heightmap
+
 
 warnings.filterwarnings("ignore", category=FutureWarning)
 
